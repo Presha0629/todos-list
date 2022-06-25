@@ -4,8 +4,9 @@ import Footer from "./MyComponents/Footer";
 import Todos from "./MyComponents/Todos";
 import AddTodo from "./MyComponents/AddTodo";
 import About from './MyComponents/About';
+import Register from './MyComponents/Register';
 import React, { useState, useEffect} from 'react';
-
+import LoginPage from './MyComponents/LoginPage';
 import {
   BrowserRouter,
   Routes,
@@ -13,6 +14,7 @@ import {
 } from "react-router-dom";
 
 function App() {
+
   let initTodo;
   if (localStorage.getItem("todos") === null) {
     initTodo = [];
@@ -47,7 +49,7 @@ function App() {
     console.log(myTodo);
   }
 
-  const [todos, setTodos] = useState([initTodo]);
+  const [todos, setTodos] = useState([]);
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos])
@@ -63,6 +65,8 @@ function App() {
               </>
           }/>
           <Route path="/about" element={<About />}/>
+          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/register" element={<Register/>}/>
         </Routes>
       <Footer />
     </BrowserRouter>
